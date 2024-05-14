@@ -1,5 +1,5 @@
 import './style.css'
-import init from './test-triangle';
+import init from './ising';
 import { assert } from './utils/util';
 import { Pane } from 'tweakpane';
 
@@ -19,33 +19,27 @@ import { Pane } from 'tweakpane';
 
   const canvas = document.querySelector<HTMLCanvasElement>('#webgpu-canvas');
   assert(canvas !== null);
-  const observer = new ResizeObserver(() => {
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
+  // const observer = new ResizeObserver(() => {
+  //   canvas.width = canvas.clientWidth;
+  //   canvas.height = canvas.clientHeight;
 
-    // Note: You might want to add logic to resize your render target textures here.
-
-  });
-  observer.observe(canvas);
+  // });
+  // observer.observe(canvas);
   const context = canvas.getContext('webgpu') as GPUCanvasContext;
 
   // Tweakpane: easily adding tweak control for parameters.
   const PARAMS = {
     level: 0,
-    name: 'Test',
+    name: 'Inverse Temperature',
     active: true,
   };
 
   const pane = new Pane({
-    title: 'Debug',
-    expanded: false,
+    title: 'Parameters',
+    expanded: true,
   });
 
-  pane.addInput(PARAMS, 'level', {min: 0, max: 100});
-  pane.addInput(PARAMS, 'name');
-  pane.addInput(PARAMS, 'active');
+  pane.addInput(PARAMS, 'level', {min: .01, max: 2.0});
 
-  // Your WebGPU code can go here:
-
-  init(context, device);  // Remove me!
+  init(context, device);
 })();
