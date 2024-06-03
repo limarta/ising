@@ -1,5 +1,7 @@
 import './style.css'
 import init from './ising';
+// import init from './texture';
+// import init from './vid';
 import { assert } from './utils/util';
 import { Pane } from 'tweakpane';
 
@@ -19,12 +21,6 @@ import { Pane } from 'tweakpane';
 
   const canvas = document.querySelector<HTMLCanvasElement>('#webgpu-canvas');
   assert(canvas !== null);
-  // const observer = new ResizeObserver(() => {
-  //   canvas.width = canvas.clientWidth;
-  //   canvas.height = canvas.clientHeight;
-
-  // });
-  // observer.observe(canvas);
   const context = canvas.getContext('webgpu') as GPUCanvasContext;
 
   // Tweakpane: easily adding tweak control for parameters.
