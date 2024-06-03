@@ -279,6 +279,9 @@ export default function init(
   // SIMULATE
   // --------
   let step = 0;
+  let lastFrameTime = performance.now();
+  const framerateDisplay = document.getElementById('framerate');
+
   function updateGrid() {
     const encoder = device.createCommandEncoder({label: "command encoder"})
 
@@ -317,6 +320,10 @@ export default function init(
     device.queue.submit([encoder.finish()]);
 
     step++;
+    let fps = 1 / ((performance.now() - lastFrameTime) / 1000);
+    framerateDisplay.textContent = `FPS: ${fps.toFixed(2)}`;
+    lastFrameTime = performance.now();
+    console.log("fps: ", fps);
   }
   
   const FPS = 0.0001;

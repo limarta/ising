@@ -6,12 +6,14 @@
     <title>Ising Model simulation</title>
   </head>
   <body>
-    <canvas  height="600" width="600" id="webgpu-canvas">
+    <div style="display: flex; justify-content: center; align-items: center">
+      <canvas height="500" width="500" id="webgpu-canvas"></canvas>
+    </div>
+    <div id="framerate"></div>
+    <p>
+      The Ising model is a classic example for Gibbs sampling. This repo tests to see how fast we can simulate 1k by 1k square magnet on the browser.
+    </p>
     <script type="module" src="./src/main.ts"></script>
-
-    <!-- <script type = "module" src="/src/texture.ts"></script> -->
-
-    <!-- <script type="module" src="/src/webrtc.ts" ></script> -->
-    <!-- <video id="video"></video> -->
+    
   </body>
 </html>
